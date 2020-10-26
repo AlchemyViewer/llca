@@ -1,33 +1,10 @@
-stages:
-  - build
-  - deploy
+include:
+  - project: 'alchemy/infrastructure/gitlab-ci-config'
+    file: '3p-library.yml'
 
 variables:
-  AUTOBUILD_PACKAGE_BASE_DIR: autobuild-external
-  AUTOBUILD_PACKAGE_DIR: llca
-  AUTOBUILD_PACKAGE_NAME: llca
-  AUTOBUILD_BUILD_ID: $CI_PIPELINE_ID
-
-build:common:
-  stage: build
-  image: r.alchemyviewer.org/alchemy/infrastructure/debian-build-image:latest
-  tags:
-    - linux
-    - docker
-  script:
-    - autobuild build -p common
-    - autobuild package -p common
-  artifacts:
-    paths:
-      - $AUTOBUILD_PACKAGE_NAME-*common*.tar.bz2
-
-deploy:nexus:
-  stage: deploy
-  tags:
-    - autobuild
-    - windows
-  when: manual
-  script:
-    - $FileNameCommon = Get-ChildItem -Path . -Name -Include ${env:AUTOBUILD_PACKAGE_NAME}-*-common-${env:AUTOBUILD_BUILD_ID}*.tar.bz2
-    - $UrlCommon = "https://pkg.alchemyviewer.org/repository/${env:AUTOBUILD_PACKAGE_BASE_DIR}/${env:AUTOBUILD_PACKAGE_DIR}/common/${FileNameCommon}"
-    - curl.exe --user "${env:AUTOBUILD_HTTP_USER}:${env:AUTOBUILD_HTTP_PASS}" --upload-file .\$FileNameCommon $UrlCommon
+  BUILD_COMMON: 1
+  BUILD_WINDOWS: 0
+  BUILD_WINDOWS64: 0
+  BUILD_LINUX64: 0
+  BUILD_MACOS: 0

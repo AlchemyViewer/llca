@@ -1,3 +1,0 @@
-autobuild_build_parameters="--platform common"
-autobuild_package_parameters="--platform common"
-public_build=true
