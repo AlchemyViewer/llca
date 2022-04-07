@@ -5,7 +5,7 @@ set -e
 set -x
 
 # Fetch mk-ca-bundle.pl from github
-curl -s 'https://raw.githubusercontent.com/curl/curl/master/lib/mk-ca-bundle.pl' -o './mk-ca-bundle.pl'
+curl -s 'https://github.com/curl/curl/raw/master/scripts/mk-ca-bundle.pl' -o './mk-ca-bundle.pl'
 
 # Patch mk-ca-bundle.pl to add time validity tests
 patch < ../mk-ca-bundle.patch
