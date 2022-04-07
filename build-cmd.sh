@@ -5,10 +5,10 @@ set -e
 set -x
 
 # Fetch mk-ca-bundle.pl from github
-curl -s 'https://github.com/curl/curl/raw/master/scripts/mk-ca-bundle.pl' -o './mk-ca-bundle.pl'
+curl -s 'https://raw.githubusercontent.com/curl/curl/master/scripts/mk-ca-bundle.pl' -o './mk-ca-bundle.pl'
 
 # Patch mk-ca-bundle.pl to add time validity tests
-patch < ../mk-ca-bundle.patch
+# patch < ../mk-ca-bundle.patch
 
 # Get the certdata.txt file directly from Mozilla (it appears that the location in mk-ca-bundle.pl is not current)
 # see https://www.mozilla.org/en-US/about/governance/policies/security-group/certs/
