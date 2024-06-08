@@ -4,7 +4,7 @@
     <key>package_description</key>
     <map>
       <key>canonical_repo</key>
-      <string>https://git.alchemyviewer.org/alchemy/thirdparty/llca</string>
+      <string>https://github.com/AlchemyViewer/llca</string>
       <key>copyright</key>
       <string>Copyright (c) 2020, Alchemy Development Group; data provided by the Mozilla NSS Project.
       </string>
